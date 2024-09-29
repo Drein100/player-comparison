@@ -163,6 +163,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         resultDiv.appendChild(table);
+
+        document.getElementById("download-btn").disabled = false;
     }
 });
 function filterSuggestions(inputValue, suggestionsContainer) {
@@ -226,4 +228,14 @@ suggestions1.addEventListener("mousedown", function(event) {
 
 suggestions2.addEventListener("mousedown", function(event) {
     event.preventDefault(); // Prevent blur event from firing
+});
+
+document.getElementById("download-btn").addEventListener("click", function() {
+    const resultContainer = document.getElementById("comparison-result");
+        html2canvas(resultContainer.querySelector("table")).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'comparison_table.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
 });
