@@ -1,0 +1,179 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #181818; /* Koyu arka plan */
+    margin: 20px;
+    padding: 0;
+    color: #f8f9fa; /* Yazı rengi açık */
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    padding-top: 2px;
+    background-color: #242424; /* Koyu konteyner arka planı */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Daha belirgin gölge */
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff; /* Başlık rengi beyaz */
+    margin-bottom: 20px;
+}
+
+.select-container {
+    display: flex;
+    flex-direction: column; /* Elemanları alt alta sıralar */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: 600;
+    color: #f8f9fa; /* Açık yazı rengi */
+}
+
+.input-container, select, button {
+    width: 100%; /* Elemanlar tam genişlikte olur */
+}
+
+input[type="text"], select {
+    padding: 10px;
+    border: 1px solid #666; /* Koyu sınır rengi */
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #343a40; /* Koyu arka plan */
+    color: #f8f9fa; /* Açık yazı rengi */
+    width: 100%;
+    box-sizing: border-box; /* Input'un taşmasını engeller */
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #034a97; /* Buton arka plan rengi */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Buton tam genişlikte olur */
+}
+
+button:disabled {
+    background-color: #555; /* Devre dışı bırakılmış buton rengi */
+    cursor: not-allowed;
+}
+
+.result-container {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    color: #f8f9fa; /* Tablo yazı rengi */
+}
+
+th, td {
+    border: 1px solid #666; /* Koyu sınır rengi */
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #034a97; /* Koyu başlık arka plan rengi */
+}
+
+.highlight {
+    background-color: #109526; 
+    font-weight: bold;
+}
+
+.suggestions-container {
+    max-width: 100%;
+    border-radius: 5px;
+    background-color: #242424; /* Koyu arka plan */
+    max-height: 150px; /* Set a maximum height for the suggestions box */
+    overflow-y: auto; /* Add scrolling if there are too many suggestions */
+    z-index: 1000; /* Ensure it appears on top */
+}
+
+.suggestion-item {
+    padding: 10px;
+    border: 0.1px solid rgb(100, 100, 100); /* Koyu kenar rengi */
+    cursor: pointer;
+    color: #f8f9fa; /* Açık yazı rengi */
+}
+
+.suggestion-item:hover {
+    background-color: #034a97; /* Öneri üzerine gelindiğinde arka plan rengi */
+}
+
+select {
+    max-width: 100%;
+    padding: 10px;
+    border: 1px solid #666; /* Koyu sınır rengi */
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #343a40; /* Koyu arka plan */
+    color: #f8f9fa; /* Açık yazı rengi */
+    appearance: none; /* Remove default arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="gray" width="12" height="12"><polygon points="5,7 10,12 15,7" /></svg>'); /* Custom arrow */
+    background-repeat: no-repeat; /* Prevent repeating */
+    background-position: right 10px center; /* Position arrow */
+    background-size: 12px; /* Size of the arrow */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Add some hover effect for the select box */
+select:hover {
+    border-color: #034a97; /* Change border color on hover */
+}
+
+select:focus {
+    outline: none; /* Remove outline */
+    border-color: #034a97; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle shadow */
+}
+
+#player2-input:disabled, #player1-input:disabled {
+    background-color: #555; /* Devre dışı bırakılmış input rengi */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    body {
+        margin: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    input[type="text"], select, button {
+        font-size: 14px;
+    }
+    body {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    input[type="text"], select, button {
+        padding: 8px;
+    }
+
+    input[type="text"], select, button {
+        font-size: 12px;
+    }
+    body {
+        font-size: 0.75em;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+}

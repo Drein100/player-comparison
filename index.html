@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Comparison</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Player Comparison</h1>
+        <div class="select-container">
+            <label for="league-select">League:</label>
+            <select id="league-select">
+                <option value="" disabled selected>Select league.</option>
+                <option value="Premier League">Premier League</option>
+                <option value="La Liga">La Liga</option>
+                <option value="Bundesliga">Bundesliga</option>
+                <option value="Serie A">Serie A</option>
+                <option value="Ligue 1">Ligue 1</option>
+                <option value="Super Lig">Super Lig</option>
+                <option value="Champions League">Champions League</option>
+                <option value="Europa League">Europa League</option>
+            </select>
+
+            <label for="player1-input">Player 1:</label>
+            <div class="input-container">
+                <input type="text" id="player1-input" placeholder="Type player name..." autocomplete="off" disabled>
+                <div id="suggestions1" class="suggestions-container"></div>
+            </div>
+
+            <label for="player2-input">Player 2:</label>
+            <div class="input-container">
+                <input type="text" id="player2-input" placeholder="Type player name..." autocomplete="off" disabled>
+                <div id="suggestions2" class="suggestions-container"></div>
+            </div>
+
+            <button id="compare-btn" disabled>Compare</button>
+        </div>
+        <div id="comparison-result" class="result-container"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
