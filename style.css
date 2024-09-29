@@ -144,6 +144,9 @@ select:focus {
 #player2-input:disabled, #player1-input:disabled {
     background-color: #757575; /* Disabled input background */
 }
+#comparison-result {
+    text-align: center;
+}
 
 /* Responsive styles */
 @media (max-width: 768px) {
