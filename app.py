@@ -39,7 +39,7 @@ player_stats = {
     "Possession Won Final 3rd (per match)": 'poss_won_att_3rd',
     "Blocks (per match)": 'outfielder_block',
     "Successful Tackles (per match)": 'won_tackle',
-    "Clearences (per match)": 'effective_clearance',
+    "Clearances (per match)": 'effective_clearance',
     "Interceptions (per match)": 'interception',
     "Fouls (per match)": 'fouls',
     "Saves (per match)": 'saves',

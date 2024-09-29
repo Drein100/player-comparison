@@ -9,6 +9,52 @@ document.addEventListener("DOMContentLoaded", () => {
     let selectedLeague = "";
     let playerNames = [];
 
+    // Define sections globally
+    const sections = {
+        "Attacking": [
+            "FotMob Rating",
+            "Goals",
+            "Expected Goals (xG)",
+            "Goals (per match)",
+            "Expected Goals (xG - per match)",
+            "Assists",
+            "Expected Assists (xA)",
+            "Expected Assists (xA - per match)",
+            "Goals + Assists",
+            "xG + xA (per match)",
+            "Shots (per match)",
+            "Shots on Target (per match)",
+            "Big Chances Missed",
+            "Penalties Awarded"
+        ],
+        "Performance Stats": [
+            "Big Chances Created",
+            "Accurate Long Balls (per match)",
+            "Accurate Passes (per match)",
+            "Successful Dribbles (per match)",
+            "Possession Won Final 3rd (per match)"
+        ],
+        "Defence Stats": [
+            "Penalties Conceded",
+            "Blocks (per match)",
+            "Successful Tackles (per match)",
+            "Clearances (per match)",
+            "Interceptions (per match)"
+        ],
+        "Disciplinary Stats": [
+            "Fouls (per match)",
+            "Yellow Card",
+            "Red Card"
+        ],
+        "Goalkeeping Stats": [
+            "Clean Sheets",
+            "Goals Conceded (per match)",
+            "Goals Prevented",
+            "Saves (per match)",
+            "Save Percentage"
+        ]
+    };
+
     leagueSelect.addEventListener("change", () => {
         selectedLeague = leagueSelect.value;
         player1Input.value = "";
@@ -91,82 +137,59 @@ document.addEventListener("DOMContentLoaded", () => {
             };
         }
 
+        // Log the comparisonData for debugging
+        console.log("Comparison Data:", comparisonData);
+
         displayComparison(comparisonData, player1, player2);
     });
 
     function displayComparison(comparisonData, player1, player2) {
         resultDiv.innerHTML = "<h2>Results</h2>";
         const table = document.createElement("table");
-
+        
+        // Create the header row
         table.innerHTML = "<tr><th>Stats</th><th>" + player1 + "</th><th>" + player2 + "</th></tr>";
+    
+        // Group the stats and append them to the table
+        for (const section in sections) {
+            // Add section header
+            const sectionHeader = document.createElement("tr");
+            sectionHeader.innerHTML = `<td colspan="3" class="section-header">${section}</td>`;
+            table.appendChild(sectionHeader);
+    
+            sections[section].forEach(stat => {
+                if (comparisonData[stat]) {
+                    const row = document.createElement("tr");
+                    const value1 = comparisonData[stat][player1];
+                    const value2 = comparisonData[stat][player2];
 
-        const statOrder = [
-            "FotMob Rating",
-            "Goals",
-            "Expected Goals (xG)",
-            "Goals (per match)",
-            "Expected Goals (xG - per match)",
-            "Assists",
-            "Expected Assists (xA)",
-            "Expected Assists (xA - per match)",
-            "Goals + Assists",
-            "xG + xA (per match)",
-            "Goals Conceded (per match)",
-            "Goals Prevented",
-            "Shots (per match)",
-            "Shots on Target (per match)",
-            "Big Chances Created",
-            "Big Chances Missed",
-            "Penalties Awarded",
-            "Penalties Conceded",
-            "Accurate Long Balls (per match)",
-            "Accurate Passes (per match)",
-            "Successful Dribbles (per match)",
-            "Possession Won Final 3rd (per match)",
-            "Blocks (per match)",
-            "Successful Tackles (per match)",
-            "Clearences (per match)",
-            "Interceptions (per match)",
-            "Fouls (per match)",
-            "Saves (per match)",
-            "Save Percentage",
-            "Clean Sheets",
-            "Red Card",
-            "Yellow Card"
-        ];
+                    const lowerIsBetterStats = [
+                        "Big Chances Missed",
+                        "Fouls (per match)",
+                        "Goals Conceded (per match)",
+                        "Penalties Conceded",
+                        "Yellow Card",
+                        "Red Card"
+                    ];
 
-        const lowerIsBetterStats = [
-            "Big Chances Missed",
-            "Fouls (per match)",
-            "Goals Conceded (per match)",
-            "Penalties Conceded",
-            "xG Conceded",
-            "Yellow Card",
-            "Red Card"
-        ];
+                    const cell1Class = lowerIsBetterStats.includes(stat) ? (value1 < value2 ? 'highlight' : '') : (value1 > value2 ? 'highlight' : '');
+                    const cell2Class = lowerIsBetterStats.includes(stat) ? (value2 < value1 ? 'highlight' : '') : (value2 > value1 ? 'highlight' : '');
 
-        statOrder.forEach(stat => {
-            if (comparisonData[stat]) {
-                const row = document.createElement("tr");
-                const value1 = comparisonData[stat][player1];
-                const value2 = comparisonData[stat][player2];
-
-                const cell1Class = lowerIsBetterStats.includes(stat) ? (value1 < value2 ? 'highlight' : '') : (value1 > value2 ? 'highlight' : '');
-                const cell2Class = lowerIsBetterStats.includes(stat) ? (value2 < value1 ? 'highlight' : '') : (value2 > value1 ? 'highlight' : '');
-
-                row.innerHTML = `
-                    <td>${stat}</td>
-                    <td class="${cell1Class}">${value1}</td>
-                    <td class="${cell2Class}">${value2}</td>`;
-                table.appendChild(row);
-            }
-        });
-
+                    row.innerHTML = `
+                        <td>${stat}</td>
+                        <td class="${cell1Class}">${value1}</td>
+                        <td class="${cell2Class}">${value2}</td>`;
+                    table.appendChild(row);
+                }
+            });
+        }
+    
         resultDiv.appendChild(table);
-
+    
         document.getElementById("download-btn").disabled = false;
     }
 });
+
 function filterSuggestions(inputValue, suggestionsContainer) {
     suggestionsContainer.innerHTML = ""; // Clear previous suggestions
     if (inputValue) {

@@ -147,6 +147,9 @@ select:focus {
 #comparison-result {
     text-align: center;
 }
+.section-header {
+    background-color: #505050;
+}
 
 /* Responsive styles */
 @media (max-width: 768px) {
