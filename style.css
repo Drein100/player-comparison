@@ -121,7 +121,7 @@ select {
     border-radius: 5px;
     font-size: 16px;
     background-color: #2e2e2e; /* Dark select background */
-    color: #ffffff; /* Select text color */
+    color: #e1e1e1; /* Select text color */
     appearance: none; /* Remove default arrow */
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="gray" width="12" height="12"><polygon points="5,7 10,12 15,7" /></svg>'); /* Custom arrow */
     background-repeat: no-repeat; /* Prevent repeating */
@@ -143,6 +143,12 @@ select:focus {
 
 #player2-input:disabled, #player1-input:disabled {
     background-color: #757575; /* Disabled input background */
+}
+input:disabled::placeholder {
+    color: #909090;
+}
+input::placeholder {
+    color: #757575;
 }
 #comparison-result {
     text-align: center;

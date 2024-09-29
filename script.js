@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Define sections globally
     const sections = {
-        "Attacking": [
+        "Attacking Stats": [
             "FotMob Rating",
             "Goals",
             "Expected Goals (xG)",
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "Successful Dribbles (per match)",
             "Possession Won Final 3rd (per match)"
         ],
-        "Defence Stats": [
+        "Defencing Stats": [
             "Penalties Conceded",
             "Blocks (per match)",
             "Successful Tackles (per match)",
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
         for (const section in sections) {
             // Add section header
             const sectionHeader = document.createElement("tr");
-            sectionHeader.innerHTML = `<td colspan="3" class="section-header">${section}</td>`;
+            sectionHeader.innerHTML = `<td colspan="3" class="section-header"><b>${section}</b></td>`;
             table.appendChild(sectionHeader);
     
             sections[section].forEach(stat => {
