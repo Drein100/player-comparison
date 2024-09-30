@@ -19,8 +19,15 @@ body {
 h1 {
     text-align: center;
     color: #e6e6ff; /* Açık başlık rengi */
+    margin-bottom: 0px;
 }
-
+.infos > p {
+    text-align: center;
+    opacity: 0.15;
+    margin: 0px;
+    padding: 0px;
+    font-size: 12px;
+}
 .select-container {
     display: flex;
     flex-direction: column;
@@ -183,6 +190,9 @@ input:enabled:hover, input:enabled:focus {
     body {
         font-size: 0.8em;
     }
+    .infos > p {
+        font-size: 10px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -200,5 +210,8 @@ input:enabled:hover, input:enabled:focus {
 
     h1 {
         font-size: 1.5em;
+    }
+    .infos > p {
+        font-size: 8px;
     }
 }
