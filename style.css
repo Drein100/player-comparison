@@ -1,7 +1,7 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #121212; /* Dark mode background */
-    color: #ffffff; /* Text color */
+    background-color: #1e1e2f; /* Koyu arka plan rengi */
+    color: #f0f0f5; /* Açık metin rengi */
     margin: 20px;
     padding: 0;
 }
@@ -10,28 +10,27 @@ body {
     max-width: 800px;
     margin: auto;
     padding: 20px;
-    padding-top: 2px;
-    background-color: #1e1e1e; /* Dark mode container */
+    padding-top: 5px;
+    background-color: #2b2b3a; /* Koyu gri arka plan */
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Daha koyu gölge */
 }
 
 h1 {
     text-align: center;
-    color: #ffffff; /* Header text color */
-    margin-bottom: 20px;
+    color: #e6e6ff; /* Açık başlık rengi */
 }
 
 .select-container {
     display: flex;
-    flex-direction: column; /* Elemanları alt alta sıralar */
+    flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
 }
 
 label {
     font-weight: 600;
-    color: #ffffff; /* Label color */
+    color: #f0f0f5; /* Açık etiket rengi */
 }
 
 .input-container, select, button {
@@ -40,124 +39,134 @@ label {
 
 input[type="text"], select {
     padding: 10px;
-    border: 1px solid #424242; /* Dark border */
+    border: 1px solid #4b4b5e; /* Koyu sınır */
     border-radius: 5px;
     font-size: 16px;
-    background-color: #2e2e2e; /* Dark input background */
-    color: #ffffff; /* Input text color */
+    background-color: #343444; /* Koyu seçim kutusu arka planı */
+    color: #f0f0f5; /* Açık metin rengi */
     width: 100%;
-    box-sizing: border-box; /* Input'un taşmasını engeller */
+    box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s;
 }
 
 button {
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #3f51b5; /* Button background color */
+    background-color: #28a745; /* Buton arka plan rengi */
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%; /* Buton tam genişlikte olur */
+    transition: background-color 0.3s, opacity 0.3s;
+    width: 100%;
 }
 
 button:disabled {
-    background-color: #757575; /* Disabled button color */
+    background-color: #adb5bd; /* Disabled buton rengi */
     cursor: not-allowed;
+    opacity: 0.65;
 }
 
 .result-container {
     margin-top: 20px;
+    padding: 10px;
+    background-color: #2b2b3a;
+    border-radius: 5px;
+    border: 1px solid #4b4b5e;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-    background-color: #2e2e2e; /* Dark table background */
+    background-color: #2b2b3a; /* Tablo arka plan rengi */
 }
 
 th, td {
-    border: 1px solid #424242; /* Dark border for table */
+    border: 1px solid #4b4b5e; /* Tablo sınırları */
     padding: 8px;
     text-align: center;
-    color: #ffffff; /* Table text color */
+    color: #f0f0f5; /* Açık metin rengi */
 }
 
 th {
-    background-color: #3f51b5; /* Dark header background */
+    background-color: #343444; /* Başlık arka planı */
+    color: #d4d4d4; /* Başlık metni */
 }
 
 .highlight {
-    background-color: #90dffe; 
+    background-color: #28a745; /* Daha iyi değerler için açık yeşil */
     font-weight: bold;
 }
 
 .suggestions-container {
     max-width: 100%;
     border-radius: 5px;
-    background-color: #1e1e1e; /* Dark suggestions background */
-    max-height: 150px; /* Set a maximum height for the suggestions box */
-    overflow-y: auto; /* Add scrolling if there are too many suggestions */
-    z-index: 1000; /* Ensure it appears on top */
+    background-color: #2b2b3a; /* Koyu öneriler arka planı */
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
 }
 
 .suggestion-item {
     padding: 10px;
-    border: 0.1px solid rgb(100, 100, 100); /* Dark suggestion border */
+    border: 0.1px solid rgb(100, 100, 100); /* Koyu öneri sınırı */
     cursor: pointer;
-    color: #ffffff; /* Suggestion text color */
+    color: #f0f0f5; /* Açık öneri metni */
 }
 
 .suggestion-item:hover {
-    background-color: #424242; /* Highlight suggestion on hover */
+    background-color: #3e3e50; /* Hover öneri rengi */
 }
 
 select {
     max-width: 100%;
     padding: 10px;
-    border: 1px solid #424242; /* Dark border */
+    border: 1px solid #4b4b5e; /* Koyu sınır */
     border-radius: 5px;
     font-size: 16px;
-    background-color: #2e2e2e; /* Dark select background */
-    color: #e1e1e1; /* Select text color */
-    appearance: none; /* Remove default arrow */
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="gray" width="12" height="12"><polygon points="5,7 10,12 15,7" /></svg>'); /* Custom arrow */
-    background-repeat: no-repeat; /* Prevent repeating */
-    background-position: right 10px center; /* Position arrow */
-    background-size: 12px; /* Size of the arrow */
-    cursor: pointer; /* Change cursor to pointer */
+    background-color: #343444; /* Koyu seçim kutusu arka planı */
+    color: #f0f0f5; /* Açık metin rengi */
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="gray" width="12" height="12"><polygon points="5,7 10,12 15,7" /></svg>'); /* Özel ok ikonu */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    cursor: pointer;
 }
 
-/* Add some hover effect for the select box */
 select:hover {
-    border-color: #80bdff; /* Change border color on hover */
+    border-color: #28a745; /* Hover efekti */
 }
 
 select:focus {
-    outline: none; /* Remove outline */
-    border-color: #80bdff; /* Change border color on focus */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle shadow */
+    outline: none;
+    border-color: #28a745;
+    background-color: #3e3e50; /* Seçim kutusu hover */
 }
-
-#player2-input:disabled, #player1-input:disabled {
-    background-color: #757575; /* Disabled input background */
+input:disabled {
+    cursor: not-allowed;
 }
 input:disabled::placeholder {
-    color: #909090;
+    color: #6d737a;
 }
-input::placeholder {
-    color: #757575;
+
+input:enabled:hover, input:enabled:focus {
+    border-color: #28a745;
+    background-color: #3e3e50; 
+    outline: none; 
 }
+
 #comparison-result {
     text-align: center;
 }
+
 .section-header {
-    background-color: #505050;
+    background-color: #343444;
 }
 
-/* Responsive styles */
+/* Responsive Düzenlemeler */
 @media (max-width: 768px) {
     body {
         margin: 10px;
@@ -170,6 +179,7 @@ input::placeholder {
     input[type="text"], select, button {
         font-size: 14px;
     }
+
     body {
         font-size: 0.8em;
     }
@@ -179,12 +189,15 @@ input::placeholder {
     input[type="text"], select, button {
         padding: 8px;
     }
+
     input[type="text"], select, button {
         font-size: 12px;
     }
+
     body {
         font-size: 0.75em;
     }
+
     h1 {
         font-size: 1.5em;
     }
