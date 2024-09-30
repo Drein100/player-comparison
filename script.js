@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function checkInputs() {
         const player1 = player1Input.value;
         const player2 = player2Input.value;
-        compareBtn.disabled = !player1 || !player2 || player1 === player2;
+        compareBtn.disabled = !player1 || !player2;
     }
 
     compareBtn.addEventListener("click", () => {
