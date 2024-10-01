@@ -14,6 +14,7 @@ league_info = {
     'Champions League': {'id': 42, 'season': 24110},
     'Europa League': {'id': 73, 'season': 24112}
 }
+
 player_stats = {
     "FotMob Rating": 'rating',
     "Goals": 'goals',
@@ -82,10 +83,15 @@ def fetch_team_data(league_name, stat_name):
     names = [item['name'] for item in stats_data]
     stat_values = [item['statValue']['value'] for item in stats_data]
 
+    # Oyuncu ID'lerini ve resim URL'lerini al
+    player_ids = [item['id'] for item in stats_data]
+    player_images = [f'https://images.fotmob.com/image_resources/playerimages/{player_id}.png' for player_id in player_ids]
+
     # DataFrame oluştur
     df = pd.DataFrame({
         'Takım': names,
         stat_name: stat_values,
+        'Oyuncu Resmi': player_images  # Oyuncu resmini ekle
     })
 
     return df
@@ -99,7 +105,7 @@ def compare_teams(league_name, stat_names):
         # İstatistikleri sözlükte sakla
         for index, row in df_team.iterrows():
             if row['Takım'] not in combined_stats:
-                combined_stats[row['Takım']] = {}
+                combined_stats[row['Takım']] = {'Oyuncu Resmi': row['Oyuncu Resmi']}  # Oyuncu resmini ekle
             # Değerleri yuvarlayarak ekle
             combined_stats[row['Takım']][stat_name] = round(row[stat_name], 1)
 

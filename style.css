@@ -172,6 +172,13 @@ input:enabled:hover, input:enabled:focus {
 .section-header {
     background-color: #343444;
 }
+.player-image {
+    width: 70px;  /* Adjust size as needed */
+    display: block;
+    height: auto;
+    margin: auto;
+    margin-bottom: 5px;
+}
 
 /* Responsive Düzenlemeler */
 @media (max-width: 768px) {
@@ -193,6 +200,9 @@ input:enabled:hover, input:enabled:focus {
     .infos > p {
         font-size: 10px;
     }
+    .player-image {
+        width: 60px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -213,5 +223,8 @@ input:enabled:hover, input:enabled:focus {
     }
     .infos > p {
         font-size: 8px;
+    }
+    .player-image {
+        width: 40px;
     }
 }

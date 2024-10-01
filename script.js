@@ -148,21 +148,26 @@ document.addEventListener("DOMContentLoaded", () => {
         const table = document.createElement("table");
         
         // Create the header row
-        table.innerHTML = "<tr><th>Stats</th><th>" + player1 + "</th><th>" + player2 + "</th></tr>";
-    
+        table.innerHTML = `
+            <tr>
+                <th>Stats</th>
+                <th><img src="${allData["Oyuncu Resmi"][player1]}" alt="${player1}" class="player-image" /> ${player1}</th>
+                <th><img src="${allData["Oyuncu Resmi"][player2]}" alt="${player2}" class="player-image" /> ${player2}</th>
+            </tr>`;
+        
         // Group the stats and append them to the table
         for (const section in sections) {
             // Add section header
             const sectionHeader = document.createElement("tr");
             sectionHeader.innerHTML = `<td colspan="3" class="section-header"><b>${section}</b></td>`;
             table.appendChild(sectionHeader);
-    
+        
             sections[section].forEach(stat => {
                 if (comparisonData[stat]) {
                     const row = document.createElement("tr");
                     const value1 = comparisonData[stat][player1];
                     const value2 = comparisonData[stat][player2];
-
+    
                     const lowerIsBetterStats = [
                         "Big Chances Missed",
                         "Fouls (per match)",
@@ -171,10 +176,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         "Yellow Card",
                         "Red Card"
                     ];
-
+    
                     const cell1Class = lowerIsBetterStats.includes(stat) ? (value1 < value2 ? 'highlight' : '') : (value1 > value2 ? 'highlight' : '');
                     const cell2Class = lowerIsBetterStats.includes(stat) ? (value2 < value1 ? 'highlight' : '') : (value2 > value1 ? 'highlight' : '');
-
+    
                     row.innerHTML = `
                         <td>${stat}</td>
                         <td class="${cell1Class}">${value1}</td>
