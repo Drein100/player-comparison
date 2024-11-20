@@ -53,13 +53,21 @@ player_stats = {
 def fetch_team_data(league_name, stat_name):
     league_name = capitalize_words(league_name)
 
+    cookies = {
+        'g_state': '{"i_p":1732114263968,"i_l":1}',
+        'u:location': '%7B%22countryCode%22%3A%22TR%22%2C%22ccode3%22%3A%22TUR%22%2C%22timezone%22%3A%22Europe%2FIstanbul%22%2C%22ip%22%3A%22176.33.240.71%22%2C%22regionId%22%3A%2206%22%2C%22regionName%22%3A%22Ankara%22%7D',
+    }
+
     headers = {
-        'Referer': 'https://www.fotmob.com',
         'Accept': '*/*',
-        'Sec-Fetch-Dest': 'empty',
-        'Sec-Fetch-Mode': 'cors',
         'Sec-Fetch-Site': 'same-origin',
-        'User-Agent': 'Mozilla/5.0',
+        'Sec-Fetch-Dest': 'empty',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Sec-Fetch-Mode': 'cors',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15',
+        'Referer': f'https://www.fotmob.com/leagues/{league_info[league_name]["id"]}/stats/season/{league_info[league_name]["season"]}/players/{player_stats[stat_name]}',
+        'x-fm-req': 'eyJib2R5Ijp7InVybCI6Ii9hcGkvbGVhZ3Vlc2Vhc29uZGVlcHN0YXRzP2lkPTQyJnNlYXNvbj0yNDExMCZ0eXBlPXBsYXllcnMmc3RhdD13b25fdGFja2xlIiwiY29kZSI6MTczMjEwNzEyNTIwNywiZm9vIjoiNmYzNzkxMTQ5In0sInNpZ25hdHVyZSI6IjI2OTBBRTIyMUIxOTczMkVCMjJGOEZBMTNGRDg5MjlCIn0=',
+        'Priority': 'u=3, i',
     }
 
     league = league_info.get(league_name)
@@ -75,7 +83,7 @@ def fetch_team_data(league_name, stat_name):
         'stat': stat,
     }
 
-    response = requests.get('https://www.fotmob.com/api/leagueseasondeepstats', params=params, headers=headers)
+    response = requests.get('https://www.fotmob.com/api/leagueseasondeepstats', params=params, cookies=cookies, headers=headers)
     data = response.json()
 
     # İstatistik verilerini al
